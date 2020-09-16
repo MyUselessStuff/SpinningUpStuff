@@ -54,7 +54,7 @@ function UpgradesAndUpdates {
 	debugOut "Checking for, and installing OS upgrades:" "white"
 	sudo apt-get upgrade -y 
 	debugOut "Checking for, and installing required packages:" "white"
-	sudo apt-get install -y vim dos2unix libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 libopenmpi-dev
+	sudo apt-get install -y vim dos2unix git curl libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 libopenmpi-dev
 	debugOut "Checking for, and installing any lingering package updates updates:" "white"
 	sudo apt-get update -y 
 	debugOut "apt based updates are complete." "white"
@@ -71,7 +71,7 @@ function InstallAnacondaAndPython {
 	LatestAnacondaSize=$(echo ${AnacondaFileAndHash} | awk -F\| '{print $2}')
 	LatestAnacondaHash=$(echo ${AnacondaFileAndHash} | awk -F\| '{print $3}')
 
-	if [ ! -e ./${LatestAnacondaFile}]  ; then
+	if [ ! -e ./${LatestAnacondaFile} ]  ; then
 		debugOut "Latest Anaconda3 installer is: ${LatestAnacondaFile}" "white"
 		debugOut "(size: ${LatestAnacondaSize})- fetching..." "Yellow"
 		wget https://repo.anaconda.com/archive/${LatestAnacondaFile}
@@ -87,15 +87,15 @@ function InstallAnacondaAndPython {
 	 debugOut "md5 hashes FAIL - ABORTING" "red"
 	 else
 	 debugOut "md5 hashes MATCH" "cyan"
-	 debugOut "expected hash: ${LatestAnacondaHash}" "green"
-	 debugOut "received hash: ${dlFileHash}" "green"
+	 debugOut "expected hash: "${LatestAnacondaHash} "green"
+	 debugOut "received hash: "${dlFileHash} "green"
 	fi
 
 	debugOut "Please accept all default values while installing Anaconda, Thanks." "white"
 
 	bash ./${LatestAnaconda}
 	debugOut "updating the current shell..."
-	source ~/.bashrc .
+	source ~/.bashrc
 	debugOut "shell has been updated"
 	debugOut "running 'conda list'"
 	conda list
