@@ -2,6 +2,14 @@
 debug=1
 usePyVer='3.6'
 
+function aboutThisScript {
+	debugOut "this script is based upon the installation instructions located here:" "white"
+	debugOut "https://spinningup.openai.com/en/latest/user/installation.html" "green"
+	debugOut " " "black"
+	debugout "Notice: this script and its author are not necessarilly endorsed by OpenAI" "yellow"
+	debugOut "this script does NOT install the optional MuJuCo component." "yellow"
+}
+
 function debugOut() {
 debugMessage=$1
 thisColor=$2
@@ -96,23 +104,24 @@ function InstallAnacondaAndPython {
 	debugOut "Please accept all default values while installing Anaconda, Thanks." "white"
 
 	bash ./${LatestAnaconda}
-	debugOut "updating the current shell..."
+	debugOut "updating the current shell..." "white"
 	source ~/.bashrc
-	debugOut "shell has been updated"
-	debugOut "running 'conda list'"
+	debugOut "shell has been updated" "white"
+	debugOut "running 'conda list'" "brown"
 	conda list
-	debugOut "launching python to verify Anaconda integration. If Anaconda is installed and working, the version information it displays when it starts up will include 'Anaconda'."
-	debugOut ""
-	debugOut "To exit the Python shell, enter the command quit()."
+	debugOut "launching python to verify Anaconda integration. If Anaconda is installed and working, the version information it displays when it starts up will include 'Anaconda'." "white"
+	debugOut " " "black"
+	debugOut "To exit the Python shell, enter the command " "white"
+	debugOut "quit()" "brown"
 	python
-	debugOut "Open Anaconda Navigator with the command 'anaconda-navigator'"
-	anaconda-navigator
+	debugOut "Open Anaconda Navigator with the command 'anaconda-navigator'" "white"
+	debugOut "anaconda-navigator" "brown"
 
-	debugOut "So far, so good.  Now using Anaconda to create a conda Python 3.6 env for organizing packages used in Spinning Up"
+	debugOut "So far, so good.  Now using Anaconda to create a conda Python 3.6 env for organizing packages used in Spinning Up" "white"
 	conda create -n spinningup python=${usePyVer}
 
-	debugOut "To use Python from the environment you just created, activate the environment with: 
-	conda activate spinningup"
+	debugOut "To use Python from the environment you just created, activate the environment with: "  "white"
+	debugOut "conda activate spinningup"  "brown"
 
 }
 
@@ -140,6 +149,9 @@ function Complete {
 	debugOut "this system is now in a proper state for using 'SpinningUp'" "yellow"
 }
 
+if [[ ${debug} == 1 ]] ; then 
+	aboutThisScript
+fi
 
 UpgradesAndUpdates
 InstallAnacondaAndPython
