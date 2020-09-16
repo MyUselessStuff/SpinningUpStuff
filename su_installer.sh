@@ -53,8 +53,10 @@ fi
 function UpgradesAndUpdates {
 	debugOut "Checking for, and installing OS upgrades:" "white"
 	sudo apt-get upgrade -y 
-	debugOut "Checking for, and installing required packages:" "white"
-	sudo apt-get install -y vim dos2unix git curl libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 libopenmpi-dev
+	debugOut "Checking for, and installing required packages (vim dos2unix git curl):" "white"
+	sudo apt-get install -y vim dos2unix git curl 
+	debugOut "Checking for, and installing other required packages:" "white"
+	sudo apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 libopenmpi-dev
 	debugOut "Checking for, and installing any lingering package updates updates:" "white"
 	sudo apt-get update -y 
 	debugOut "apt based updates are complete." "white"
