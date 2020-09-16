@@ -104,7 +104,7 @@ fi
 
 	debugOut "Please accept all default values while installing Anaconda, Thanks." "white"
 
-	bash ./${LatestAnaconda}
+	bash ./${LatestAnacondaFile}
 	debugOut "updating the current shell..." "white"
 	source ~/.bashrc
 	debugOut "shell has been updated" "white"
@@ -128,7 +128,7 @@ fi
 
 
 function InstallSpinningUp {
-	sudo apt-get install -y python3-pip
+	
 	debugOut "Installing Spinning Up from github"  "white"
 	
 	git clone https://github.com/openai/spinningup.git
