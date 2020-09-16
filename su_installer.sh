@@ -111,8 +111,7 @@ function InstallAnacondaAndPython {
 	conda update -y -n base -c defaults conda
 	debugOut "updating the current shell..." "white"
 	source ~/.bashrc
-	debugOut "installing tensorflow via conda" "White"
-	conda install tensorflow
+
 	debugOut "shell has been updated" "white"
 
 	debugOut "running 'conda list'" "brown"
@@ -126,14 +125,13 @@ function InstallAnacondaAndPython {
 	debugOut "anaconda-navigator" "brown"
 
 	debugOut "So far, so good.  Now using Anaconda to create a conda Python 3.6 env for organizing packages used in Spinning Up" "white"
-	conda create -n spinningup #python=${usePyVer}
-	
+	conda create -n spinningup
+	debugOut "installing tensorflow via conda" "White"
+	conda install tensorflow
 	debugOut "To use Python from the environment you just created, activate the environment with: "  "white"
 	debugOut "conda activate spinningup"  "brown"
 	debugOut "doing that now..." "white"
 	conda activate spinningup
-	
-
 }
 
 
