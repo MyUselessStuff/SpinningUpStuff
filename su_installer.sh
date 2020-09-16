@@ -2,7 +2,7 @@
 
 sudo apt-get upgrade && sudo apt-get update
 
-sudo apt-get install vim libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+sudo apt-get install vim dos2unix libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 
 LatestAnaconda=`curl https://repo.anaconda.com/archive/ | \
 grep -i '</a>'|\
