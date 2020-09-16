@@ -1,7 +1,6 @@
 #!/bin/bash
 debug=1
 usePyVer='3.6'
-
 function aboutThisScript {
 	debugOut "this script is based upon the installation instructions located here:" "white"
 	debugOut "https://spinningup.openai.com/en/latest/user/installation.html" "green"
@@ -80,11 +79,13 @@ function InstallAnacondaAndPython {
 	LatestAnacondaSize=$(echo ${AnacondaFileAndHash} | awk -F\| '{print $2}')
 	LatestAnacondaHash=$(echo ${AnacondaFileAndHash} | awk -F\| '{print $3}')
 
-	if [ ! -e ./${LatestAnacondaFile} ]  ; then
-		debugOut "Latest Anaconda3 installer is: ${LatestAnacondaFile}" "white"
-		debugOut "(size: ${LatestAnacondaSize})- fetching..." "Yellow"
-		wget https://repo.anaconda.com/archive/${LatestAnacondaFile}
-	fi
+if [ ! -e ./${LatestAnacondaFile} ]  ; then
+debugOut "Latest Anaconda3 installer is: ${LatestAnacondaFile}" "white"
+debugOut "(size: ${LatestAnacondaSize})- fetching..." "Yellow"
+wget https://repo.anaconda.com/archive/${LatestAnacondaFile}
+else
+debugOut "we already have the file, that will save some time." "green"
+fi
 
 	dlFileHash=$(md5sum Anaconda3-2020.07-Linux-x86_64.sh|awk '{print $1}')
 
