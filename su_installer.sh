@@ -1,5 +1,7 @@
 #!/bin/bash
 
+usePyVer='3.6'
+
 sudo apt-get upgrade && sudo apt-get update
 
 sudo apt-get install vim dos2unix libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
@@ -30,7 +32,7 @@ echo "Open Anaconda Navigator with the command 'anaconda-navigator'"
 anaconda-navigator
 
 echo "So far, so good.  Now using Anaconda to create a conda Python 3.6 env for organizing packages used in Spinning Up"
-conda create -n spinningup python=3.6
+conda create -n spinningup python=${usePyVer}
 
 echo "To use Python from the environment you just created, activate the environment with: 
 conda activate spinningup"
@@ -58,4 +60,4 @@ plot the results
 python -m spinup.run plot data/installtest/installtest_s0"
 
 
-echo "this system is now in a proper state for SpinningUp"
+echo "this system is now in a proper state for SpinningUp (in theory)"
