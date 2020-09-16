@@ -128,9 +128,9 @@ fi
 
 
 function InstallSpinningUp {
-
+	sudo apt-get install -y python3-pip
 	debugOut "Installing Spinning Up from github"  "white"
-
+	
 	git clone https://github.com/openai/spinningup.git
 	cd spinningup
 	pip install -e .
